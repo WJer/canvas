@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background-color: #ddd;
+		}
+		#canvas{
+			border: thin inset #aaa;
+			background-color: #fff;
+			/*width: 300px;
+			height: 200px;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="400"></canvas>
+	<button id="button">click here</button>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById('canvas'),
+		context = canvas.getContext('2d');
+
+	context.font = '38pt Arial';
+	context.fillStyle = 'cornflowerblue';
+	context.strokeStyle = 'blue';
+
+	context.fillText('hello canvas', canvas.width/2-150, canvas.height/2+15);
+	context.strokeText('hello canvas', canvas.width/2-150, canvas.height/2+15);
+</script>
+</html>
