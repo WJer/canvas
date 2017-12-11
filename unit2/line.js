@@ -1,6 +1,6 @@
 /**
  * 线段
- * moveTo()
+ * moveTo() 不会清除子路径
  * lineTo()
  *
  * beginPath()会以moveTo()的点为起点
@@ -12,10 +12,10 @@
  * 坐标轴的绘制代码省略（P73）
  * 
  */
-var context = document.getElementById('canvas').getContext('2d');
+// var context = document.getElementById('canvas').getContext('2d');
 
 // drawTwoLine();
-drawGrid(context, 'lightgray', 10, 10);
+// drawGrid(context, 'lightgray', 10, 10);
 
 function drawTwoLine() {
 
@@ -23,7 +23,11 @@ function drawTwoLine() {
 
 	context.beginPath();
 	context.moveTo(50, 0.5);
+	context.lineTo(250, 0.5);
+	context.moveTo(251, 0.5);
 	context.lineTo(450, 0.5);
+	context.lineTo(450, 100);
+	context.closePath();
 	context.stroke();
 
 
@@ -34,7 +38,9 @@ function drawTwoLine() {
 }
 
 
-function drawGrid(context, color, stepx, stepy) {
+function drawGrid(context, color, stepx, stepy, showPos) {
+
+	context.save();
 
 	context.strokeStyle = color;
 	context.lineWidth = 0.5;
@@ -52,5 +58,7 @@ function drawGrid(context, color, stepx, stepy) {
 		context.lineTo(context.canvas.width, j);
 		context.stroke();
 	}
+
+	context.restore();
 }
 
